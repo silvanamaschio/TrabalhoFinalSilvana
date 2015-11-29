@@ -1,0 +1,112 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <ui:composition template="/templates/template.xhtml">
+        <ui:define name="titulo">
+            Manutenção de Revistas
+        </ui:define>
+        <ui:define name="conteudo">
+            <h:form id="formListagem" prependId="false">
+                <p:growl/>
+                <p:commandButton value="Novo Revista"
+                                 actionListener="#{controleRevista.novo()}"
+                                 update=":formEdicao"
+                                 process="@form"
+                                 oncomplete="PF('dlg').show();"/>
+                <p:dataTable value="#{controleRevista.dao.listarTodos}"
+                             var="obj">
+                    <f:facet name="footer">
+                        <div align="center">
+                            <p:outputLabel value="Total de registros: #{controleRevista.dao.listarTodos.size()}"/>
+                        </div>
+                    </f:facet>
+                    <p:column headerText="Cod_exemplar">
+                        <p:outputLabel value="#{obj.cod_exemplar}"/>
+                    </p:column>
+                    <p:column headerText="Titulo">
+                        <p:outputLabel value="#{obj.titulo}"/>
+                    </p:column>    
+                    <p:column headerText="Ações">
+                        <div align="center">
+                            <p:commandButton icon="ui-icon-pencil"
+                                             action="#{controleRevista.editar(obj.cod_exemplar)}"
+                                             oncomplete="PF('dlg').show();"
+                                             update=":formEdicao"
+                                             process="@form"/>
+                            <p:commandButton icon="ui-icon-trash"
+                                             action="#{controleRevista.excluir(obj.cod_exemplar)}"
+                                             update="@form" process="@form"
+                                             onclick="if (!confirm('Confirma a exclusão do objeto?'))
+                                                         return false"/>                            
+                        </div>
+                    </p:column>
+                </p:dataTable>
+
+            </h:form>
+        </ui:define>
+        <ui:define name="dialogos">
+            <p:dialog header="Edição" widgetVar="dlg"
+                      resizable="false" modal="true" width="550" height="480">
+                <h:form id="formEdicao" prependId="false">
+                    <p:growl id="growl"/>
+                    <p:tabView id="tab">
+                        <p:tab title="Dados Principais">
+                            <div align="center">
+                                <p:panelGrid columns="2">
+                                    <f:facet name="footer">
+                                        <div align="center">
+                                            <p:commandButton actionListener="#{controleRevista.salvar()}"
+                                                             update=":formListagem :formEdicao"
+                                                             value="Salvar"
+                                                             icon="ui-icon-disk"
+                                                             oncomplete="if (!args.validationFailed) {PF('dlg').hide();}"/>
+                                        </div>                            
+                                    </f:facet>
+                                    <p:outputLabel value="ID"/>
+                                    <p:inputText value="#{controleRevista.objeto.cod_exemplar}" readonly="true" size="5"/>
+                                    <p:outputLabel value="Nome" for="txtNome"/>
+                                    <p:inputText value="#{controleRevista.objeto.titulo}" id="txtTitulo" 
+                                                 size="50" maxlength="50"/>
+                                     <p:outputLabel value="DataAquisicao" for="txtDataAquisicao"/>
+                                    <p:calendar value="#{controleRevista.objeto.data_aquisicao}"
+                                                id="txtDataAquisicao"
+                                                mask="true" pattern="dd/MM/yyyy" navigator="true">
+                                        <f:converter converterId="converterCalendar"/>
+                                    </p:calendar>
+                                    <p:inputText id="txtFornecedor" value="#{controleRevista.objeto.fornecedor}"
+                                                 size="50" maxlength="50"/> 
+                                    <p:outputLabel value="Estoque" for="txtEstoque"/>
+                                    <p:inputText id="txtEstoque" value="#{controleEstoque.objeto.estoque}"
+                                                 size="30" maxlength="30"/> 
+                                    <p:outputLabel value="Editora" for="txtEditora"/>
+                                    <p:inputText id="txtEditora" value="#{controleRevista.objeto.editora}"
+                                                 size="50" maxlength="50"/> 
+                                    <p:outputLabel value="Lancamento" for="txtLancamento"/>
+                                    <p:calendar value="#{controleRevista.objeto.lancamento}"
+                                                id="txtLancamento"
+                                                mask="true" pattern="dd/MM/yyyy" navigator="true"/>
+                                    <p:outputLabel value="Valor" for="txtValor"/>
+                                    <p:inputText id="txtValor" value="#{controleRevista.objeto.valor}"
+                                                 size="10" maxlength="10"/> 
+                                    <p:outputLabel value="NroPaginas" for="txtNroPaginas"/>
+                                    <p:inputText id="txtNroPaginas" value="#{controleRevista.objeto.nro_paginas}"
+                                                 size="4" maxlength="5"/>    
+                                     <p:inputText id="txtCidade" value="#{controleRevista.objeto.cidade}"
+                                                 size="50" maxlength="50"/> 
+                                        
+
+                                </p:panelGrid>                                
+                            </div>
+                        </p:tab>
+                    </p:tabView>
+
+                </h:form>         
+            </p:dialog>
+
+        </ui:define>
+    </ui:composition>
+</html>

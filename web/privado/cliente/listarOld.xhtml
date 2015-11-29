@@ -1,0 +1,56 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Listagem de Clientes</title>
+    </h:head>
+    <h:body>
+        <h:form>
+            <p:growl/>
+            <p:dataTable value="#{controleCliente.dao.listarTodos}" var="obj" emptyMessage="Nenhum Registro Encontrado">
+                <f:facet name="header">
+                    <p:commandButton value="Novo" action="#{controleCliente.novo()}" ajax="false" icon="ui-icon-plus"/>
+                    <p:outputLabel value="Listagem de Clientes"/>
+                </f:facet>
+                <f:facet name="footer">
+
+                    <p:outputLabel  value="Total de Registros:  #{controleCliente.dao.listarTodos.size()}"/>
+                </f:facet>
+
+
+                <p:column headerText="Código">
+                    <p:outputLabel value="#{obj.cod_cliente}"/>
+                </p:column>
+                <p:column headerText="Nome">
+                    <p:outputLabel value="#{obj.nome}"/>
+                </p:column>   
+                <p:column headerText="Nascimento">
+                    <p:outputLabel value="#{obj.nascimento}">
+                        <f:converter converterId="converterCalendar"/>
+                    </p:outputLabel>
+                </p:column> 
+               
+                <p:column headerText="Bairro">
+                    <p:outputLabel value="#{obj.bairro}"/>
+                </p:column> 
+                <p:column headerText="Cidade">
+                    <p:outputLabel value="#{obj.cidade}"/>
+                </p:column> 
+
+                <p:column headerText="Ações">
+                    <p:commandButton icon="ui-icon-pencil" action="#{controleCliente.editar(obj.cod_cliente)}" ajax="false"/>
+                    <p:commandButton icon="ui-icon-trash" action="#{controleCliente.excluir(obj.cod_cliente)}" update="@form" 
+                                     process="@form" onclick="if (!confirm('Confirma a exclusão do objeto#{obj.nome}?'))
+                                                     return false"/>
+                </p:column>
+            </p:dataTable>
+            <p:commandButton value="Retornar ao Início+"
+                             action="#{controleCliente.voltarIndex()}"/>
+
+        </h:form>
+    </h:body>
+</html>
+

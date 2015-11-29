@@ -1,0 +1,75 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <ui:composition template="/templates/template.xhtml">
+
+        <ui:define name="titulo">
+
+            Manutenção de Alunos
+        </ui:define>
+        <ui:define name="conteudo">
+            <h:form>
+                <p:growl/>
+                <p:panelGrid columns="2">
+                    <f:facet name="header">
+                        <p:outputLabel value="Edição de Alunos"/>
+                    </f:facet>
+                    <f:facet name="footer">
+                        <div align =" center">
+
+                            <p:commandButton value="Salvar" action="#{controleCliente.salvar()}" ajax="false"/>
+                            <p:commandButton value="Cancelar" action="#{controleCliente.cancelar()}" ajax="false" immediate="true"/>
+                        </div>
+                    </f:facet>
+                    <p:outputLabel value="CODIGO"/>
+                    <p:inputText value="#{controleCliente.objeto.cod_cliente}" readonly="true" size="5"/>
+                    <p:outputLabel value="Nome" for="txtNome"/>
+                    <p:inputText value="#{controleCliente.objeto.nome}" size="50" maxlength="50" id="txtNome" placeholder="Digite seu nome é obrigatório" required="true"/>
+                    <p:outputLabel value="Nascimento" for="txtNascimento"/>
+                    <p:calendar value="#{controleCliente.objeto.nascimento}"
+                                id="txtNascimento"
+                                mask="true" pattern="dd/MM/yyyy" navigator="true">
+                        <f:converter converterId="converterCalendar"/>
+                    </p:calendar>
+                    <p:outputLabel value="Bairro" for="txtBairro"/>
+                    <p:inputText value="#{controleCliente.objeto.bairro}" id="txtBairro" size="50" maxlength="50" placeholder="O bairro é obrigatório" required="true"/>
+                    <p:outputLabel value="Cidade" for="txtCidade"/>
+                    <p:inputText value="#{controleCliente.objeto.cidade}" id="txtCidade" size="50" maxlength="50" placeholder="A cidade é obrigatório" required="true"/>
+                    <p:outputLabel value="Matricula" for="txtMatricula"/>
+                    <p:inputText value="#{controleAluno.objeto.matricula}"  id="txtMatricula" size="50" maxlength="50" placeholder="A matricula é obrigatória" required="true"/>
+                    <p:outputLabel value="Curso" for="txtCurso"/>
+                    <p:inputText value="#{controleAluno.objeto.curso}" size="50" maxlength="50" id="txtCurso" placeholder="O curso é obrigatório" required="true"/>
+                    <p:outputLabel value="Turma" for="txtTurma"/>
+                    <p:inputText value="#{controleAluno.objeto.turma}" size="50" maxlength="50" id="txtTurma" placeholder="A turma é obrigatória" required="true"/>
+                    <p:outputLabel value="DataMatricula" for="txtDataMatricula"/>
+                    <p:calendar value="#{controleAluno.objeto.data_matricula}"
+                                id="txtDataMatricula"
+                                mask="true" pattern="dd/MM/yyyy" navigator="true">
+                        <f:converter converterId="converterCalendar"/>
+                    </p:calendar>
+                    <p:outputLabel value="Nivel" for="txtNivel"/>
+                    <p:inputText value="#{controleAluno.objeto.nivel}" size="2" id="txtNivel" placeholder="O nível é obrigatório" required="true"/>
+                </p:panelGrid>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

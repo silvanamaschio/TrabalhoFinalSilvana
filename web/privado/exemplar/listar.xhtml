@@ -1,0 +1,61 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <ui:composition template="/templates/template.xhtml">
+        
+        <ui:define name="titulo">
+            
+            Manutenção de Exemplares
+        </ui:define>
+        <ui:define name="conteudo">
+             <h:form>
+            <p:growl/>
+            <p:dataTable value="#{controleExemplar.dao.listarTodos}" var="obj" emptyMessage="Nenhum Registro Encontrado">
+                <f:facet name="header">
+                    <p:commandButton value="Novo" action="#{controleExemplar.novo()}" ajax="false" icon="ui-icon-plus"/>
+                    <p:outputLabel value="Listagem de Exemplares"/>
+                </f:facet>
+                <f:facet name="footer">
+
+                    <p:outputLabel  value="Total de Registros:  #{controleExemplar.dao.listarTodos.size()}"/>
+                </f:facet>
+
+
+                <p:column headerText="Código">
+                    <p:outputLabel value="#{obj.cod_exemplar}"/>
+                </p:column>
+                <p:column headerText="Titulo">
+                    <p:outputLabel value="#{obj.titulo}"/>
+                </p:column>   
+                <p:column headerText="DataAquisicao">
+                    <p:outputLabel value="#{obj.data_aquisicao}">
+                        <f:converter converterId="converterCalendar"/>
+                    </p:outputLabel>
+                </p:column> 
+               
+                <p:column headerText="Fornecedor">
+                    <p:outputLabel value="#{obj.fornecedor}"/>
+                </p:column> 
+                <p:column headerText="Estoque">
+                    <p:outputLabel value="#{obj.estoque}"/>
+                </p:column> 
+
+                <p:column headerText="Ações">
+                    <p:commandButton icon="ui-icon-pencil" action="#{controleExemplar.editar(obj.cod_exemplar)}" ajax="false"/>
+                    <p:commandButton icon="ui-icon-trash" action="#{controleExemplar.excluir(obj.cod_exemplar)}" update="@form" 
+                                     process="@form" onclick="if (!confirm('Confirma a exclusão do objeto#{obj.titulo}?'))
+                                                     return false"/>
+                </p:column>
+            </p:dataTable>
+            <p:commandButton value="Retornar ao Início+"
+                             action="#{controleExemplar.voltarIndex()}"/>
+
+        </h:form>
+        </ui:define>
+    </ui:composition>
+</html>
+
