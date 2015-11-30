@@ -54,7 +54,7 @@ public class ServidorDAO implements Serializable {
         this.listarTodos = listarTodos;
     }
 
-    public Servidor getObjectById(Integer cod_aluno) {
+    public Servidor getObjectById(Integer cod_servidor) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

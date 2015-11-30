@@ -6,7 +6,6 @@ import br.edu.ifsul.util.Util;
 import java.io.Serializable;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
 import javax.faces.bean.ViewScoped;
 
 
@@ -27,13 +26,14 @@ public class ControleServidor implements Serializable {
         return "/privado/servidor/listar?faces-redirect=true";
     }
 
-    public void novo() {
-        objeto = new Servidor();        
+    public String novo() {
+        objeto = new Servidor();  
+        return "formulario?faces-redirect=true";
     }
 
     public void salvar() {
         try {
-            if (objeto.getCod_cliente()== null) {
+            if (objeto.getSiape()== null) {
                 dao.persist(objeto);
             } else {
                 dao.merge(objeto);
@@ -43,6 +43,11 @@ public class ControleServidor implements Serializable {
             Util.mensagemErro("Erro ao persistir objeto: " + e.getMessage());            
         }
     }
+    
+    public String cancelar() {
+        objeto = null;
+        return "listar?faces-redirect=true";
+    }      
     
     
     

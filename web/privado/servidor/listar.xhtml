@@ -33,12 +33,12 @@
                     <p:column headerText="Ações">
                         <div align="center">
                             <p:commandButton icon="ui-icon-pencil"
-                                             action="#{controleServidor.editar(obj.id)}"
+                                             action="#{controleServidor.editar(obj.cod_cliente)}"
                                              oncomplete="PF('dlg').show();"
                                              update=":formEdicao"
                                              process="@form"/>
                             <p:commandButton icon="ui-icon-trash"
-                                             action="#{controleServidor.excluir(obj.id)}"
+                                             action="#{controleServidor.excluir(obj.cod_cliente)}"
                                              update="@form" process="@form"
                                              onclick="if (!confirm('Confirma a exclusão do objeto?'))
                                                          return false"/>                            
@@ -66,28 +66,31 @@
                                                              oncomplete="if (!args.validationFailed) {PF('dlg').hide();}"/>
                                         </div>                            
                                     </f:facet>
-                                    <p:outputLabel value="ID"/>
+                                    <p:outputLabel value="CODIGO"/>
                                     <p:inputText value="#{controleServidor.objeto.cod_cliente}" readonly="true" size="5"/>
                                     <p:outputLabel value="Nome" for="txtNome"/>
-                                    <p:inputText value="#{controleServidor.objeto.nome}" id="txtNome" 
-                                                 size="50" maxlength="50"/>
+                                    <p:inputText value="#{controleServidor.objeto.nome}" size="50" maxlength="50" id="txtNome" placeholder="O nome é obrigatório" required="true"/>
                                     <p:outputLabel value="Nascimento" for="txtNascimento"/>
-                                    <p:inputText id="txtNascimento" value="#{controleServidor.objeto.nascimento}"
-                                                 size="50" maxlength="50"/> 
-                                    <p:inputText id="txtCidade" value="#{controleServidor.objeto.cidade}"
-                                                 size="50" maxlength="50"/> 
+                                    <p:calendar value="#{controleServidor.objeto.nascimento}"
+                                                id="txtNascimento"
+                                                mask="true" pattern="dd/MM/yyyy" navigator="true">
+                                        <f:converter converterId="converterCalendar"/>
+                                    </p:calendar>
                                     <p:outputLabel value="Bairro" for="txtBairro"/>
-                                    <p:inputText id="txtBairro" value="#{controleServidor.objeto.bairro}"
-                                                 size="30" maxlength="30"/> 
+                                    <p:inputText value="#{controleServidor.objeto.bairro}"
+                                                 id="txtBairro" size="30" maxlength="30"/> 
+                                    <p:outputLabel value="Cidade" for="txtCidade"/>
+                                    <p:inputText value="#{controleServidor.objeto.cidade}"
+                                                 id="txtCidade" size="50" maxlength="50"/> 
                                     <p:outputLabel value="Siape" for="txtSiape"/>
-                                    <p:inputText id="txtSiape" value="#{controleServidor.objeto.siape}"
-                                                 size="30" maxlength="30"/> 
+                                    <p:inputText  value="#{controleServidor.objeto.siape}"
+                                                 id="txtSiape" size="30" maxlength="30"/> 
                                     <p:outputLabel value="departamento" for="txtDepartamento"/>
-                                    <p:inputText id="txtDepartamento" value="#{controleServidor.objeto.departamento}"
-                                                 size="50" maxlength="50"/> 
+                                    <p:inputText  value="#{controleServidor.objeto.departamento}"
+                                                 id="txtDepartamento" size="50" maxlength="50"/> 
                                     <p:outputLabel value="Setor" for="txtSetor"/>
-                                    <p:inputText id="txtSetor" value="#{controleServidor.objeto.setor}"
-                                                 size="50" maxlength="50"/> 
+                                    <p:inputText value="#{controleServidor.objeto.setor}"
+                                                 id="txtSetor" size="50" maxlength="50"/> 
                                     <p:outputLabel value="DataAdmissao" for="txtDataAdmissao"/>
                                     <p:calendar value="#{controleServidor.objeto.data_admissao}"
                                                 id="txtDataAdmissao"
@@ -95,8 +98,8 @@
                                         <f:converter converterId="converterCalendar"/>
                                     </p:calendar>
                                     <p:outputLabel value="Efetivo" for="checkEfetivo"/>
-                                    <p:inputText id="checkEfetivo" value="#{controleServidor.objeto.efetivo}"
-                                                 size="2" maxlength="2"/>                                                  
+                                    <p:inputText value="#{controleServidor.objeto.efetivo}"
+                                                 id="checkEfetivo" size="2" maxlength="2"/>                                                  
                                         
 
                                 </p:panelGrid>                                
