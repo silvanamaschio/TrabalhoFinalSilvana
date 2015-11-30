@@ -87,10 +87,6 @@
                     <path-in-war>WEB-INF/lib</path-in-war>
                 </library>
                 <library dirs="200">
-                    <file>${libs.Hibernate_JPA_2.1.4.3.1.classpath}</file>
-                    <path-in-war>WEB-INF/lib</path-in-war>
-                </library>
-                <library dirs="200">
                     <file>${file.reference.lib-Hibernate_Validator_5.1}</file>
                     <path-in-war>WEB-INF/classes</path-in-war>
                 </library>

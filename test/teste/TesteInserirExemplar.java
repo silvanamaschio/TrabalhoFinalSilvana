@@ -1,7 +1,6 @@
 package teste;
 
 
-import br.edu.ifsul.modelo.Cliente;
 import br.edu.ifsul.modelo.Exemplar;
 import java.util.Calendar;
 import javax.persistence.EntityManager;

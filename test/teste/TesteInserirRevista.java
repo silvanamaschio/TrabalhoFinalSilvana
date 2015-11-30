@@ -2,7 +2,6 @@ package teste;
 
 
 import br.edu.ifsul.modelo.Aluno;
-import br.edu.ifsul.modelo.Cliente;
 import br.edu.ifsul.modelo.Livro;
 import br.edu.ifsul.modelo.Revista;
 import java.util.Calendar;
