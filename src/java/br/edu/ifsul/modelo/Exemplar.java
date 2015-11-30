@@ -20,7 +20,7 @@ import org.hibernate.validator.constraints.NotEmpty;
 @Entity
 @Table(name="exemplar")
 @Inheritance(strategy = InheritanceType.JOINED)
-public class Exemplar implements Serializable{
+abstract class Exemplar implements Serializable{
     @Id 
     @Column(name="cod_exemplar", nullable = false )
     @SequenceGenerator(name = "seq_exemplar", sequenceName = "seq_exemplar_id", allocationSize = 1)
@@ -45,29 +45,7 @@ public class Exemplar implements Serializable{
     public Exemplar() {
     }
 
-    
-    @Override
-    public int hashCode() {
-        int hash = 3;
-        hash = 53 * hash + Objects.hashCode(this.cod_exemplar);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final Exemplar other = (Exemplar) obj;
-        if (!Objects.equals(this.cod_exemplar, other.cod_exemplar)) {
-            return false;
-        }
-        return true;
-    }
-
+   
     @Override
     public String toString() {
         return titulo;
@@ -113,6 +91,27 @@ public class Exemplar implements Serializable{
         this.estoque = estoque;
     }
 
-    
+     @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 53 * hash + Objects.hashCode(this.cod_exemplar);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Exemplar other = (Exemplar) obj;
+        if (!Objects.equals(this.cod_exemplar, other.cod_exemplar)) {
+            return false;
+        }
+        return true;
+    }
+
 
 }

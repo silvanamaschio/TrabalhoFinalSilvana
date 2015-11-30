@@ -66,36 +66,37 @@
                                                              oncomplete="if (!args.validationFailed) {PF('dlg').hide();}"/>
                                         </div>                            
                                     </f:facet>
-                                    <p:outputLabel value="ID"/>
+                                    <p:outputLabel value="CODIGO"/>
                                     <p:inputText value="#{controleLivro.objeto.cod_exemplar}" readonly="true" size="5"/>
-                                    <p:outputLabel value="Nome" for="txtNome"/>
-                                    <p:inputText value="#{controleLivro.objeto.titulo}" id="txtTitulo" 
-                                                 size="50" maxlength="50"/>
+                                    <p:outputLabel value="Titulo" for="txtTitulo"/>
+                                    <p:inputText value="#{controleLivro.objeto.titulo}" size="50" maxlength="50" id="txtTitulo" placeholder="O Título é obrigatório" required="true"/>
                                      <p:outputLabel value="DataAquisicao" for="txtDataAquisicao"/>
                                     <p:calendar value="#{controleLivro.objeto.data_aquisicao}"
                                                 id="txtDataAquisicao"
                                                 mask="true" pattern="dd/MM/yyyy" navigator="true">
                                         <f:converter converterId="converterCalendar"/>
                                     </p:calendar>
-                                    <p:inputText id="txtFornecedor" value="#{controleLivro.objeto.fornecedor}"
-                                                 size="50" maxlength="50"/> 
+                                     <p:outputLabel value="Fornecedor" for="txtFornecedor"/>
+                                    <p:inputText value="#{controleLivro.objeto.fornecedor}"
+                                                 id="txtFornecedor" size="50" maxlength="50" placeholder="O Fornecedor é obrigatório" required="true"/> 
                                     <p:outputLabel value="Estoque" for="txtEstoque"/>
-                                    <p:inputText id="txtEstoque" value="#{controleEstoque.objeto.estoque}"
-                                                 size="30" maxlength="30"/> 
+                                    <p:inputText  value="#{controleLivro.objeto.estoque}"
+                                                 id="txtEstoque" size="30" maxlength="30"/> 
                                     <p:outputLabel value="Ano" for="txtAno"/>
-                                    <p:inputText id="txtAno" value="#{controleLivro.objeto.ano}"
-                                                 size="4" maxlength="4"/> 
-                                    <p:inputText id="txtCidade" value="#{controleLivro.objeto.cidade}"
-                                                 size="50" maxlength="50"/> 
+                                    <p:inputText  value="#{controleLivro.objeto.ano}"
+                                                 id="txtAno" size="4" maxlength="4"/> 
+                                    <p:outputLabel value="Cidade" for="txtCidade"/>
+                                    <p:inputText value="#{controleLivro.objeto.cidade}"
+                                                 id="txtCidade" size="50" maxlength="50" placeholder="A cidade é obrigatória" required="true"/> 
                                     <p:outputLabel value="Valor" for="txtValor"/>
-                                    <p:inputText id="txtValor" value="#{controleLivro.objeto.valor}"
-                                                 size="10" maxlength="10"/> 
+                                    <p:inputText  value="#{controleLivro.objeto.valor}"
+                                                 id="txtValor" size="10" maxlength="10"/> 
                                     <p:outputLabel value="Editora" for="txtEditora"/>
-                                    <p:inputText id="txtEditora" value="#{controleLivro.objeto.editora}"
-                                                 size="50" maxlength="50"/> 
+                                    <p:inputText  value="#{controleLivro.objeto.editora}"
+                                                 id="txtEditora" size="50" maxlength="50"/> 
                                     <p:outputLabel value="NroPaginas" for="txtNroPaginas"/>
-                                    <p:inputText id="txtNroPaginas" value="#{controleLivro.objeto.nro_paginas}"
-                                                 size="4" maxlength="5"/>                                                  />
+                                    <p:inputText value="#{controleLivro.objeto.nro_paginas}"
+                                                 id="txtNroPaginas" size="4" maxlength="5"/>                                                  
                                         
 
                                 </p:panelGrid>                                

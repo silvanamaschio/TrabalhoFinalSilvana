@@ -3,8 +3,6 @@ package br.edu.ifsul.modelo;
 import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
 import javax.persistence.Table;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotBlank;
@@ -19,14 +17,13 @@ public class Livro extends Exemplar implements Serializable {
     @Length(max = 4, message = "O ano não deve possuir mais de {max} digitos")
     @Column(name = "ano", length = 4, nullable = false)
     private String ano;
-    @Column(name="cidade", nullable = false, length = 50)
-    @Length(max = 50, message = "A cidade não deve ultrapassar (max) caracteres")
-    @NotEmpty(message= "A cidade deve ser informada")
+    @NotBlank(message = "A cidade deve ser informada")
+    @Column(name="cidade", nullable = false, length = 50, unique =true)
     private String cidade;
     @Column(name = "valor", nullable = false)
     private Double valor;
     @NotBlank(message = "A editora deve ser informada")
-    @Column(name = "editora", length = 50, nullable = false)
+    @Column(name = "editora", length = 50, nullable = false, unique = true)
     private String editora;
     @Column(name = "nro_paginas",  nullable = false)
     private Integer nro_paginas;

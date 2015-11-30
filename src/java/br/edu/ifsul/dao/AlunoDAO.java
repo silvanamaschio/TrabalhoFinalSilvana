@@ -54,7 +54,7 @@ public class AlunoDAO implements Serializable {
         this.listarTodos = listarTodos;
     }
 
-    public Aluno getObjectById(Integer cod_aluno) {
+    public Aluno getObjectById(Integer cod_cliente) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

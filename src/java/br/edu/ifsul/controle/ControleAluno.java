@@ -47,17 +47,17 @@ public class ControleAluno implements Serializable {
         return "listar?faces-redirect=true";
     }        
     
-    public void editar(Integer cod_aluno) {
+    public void editar(Integer cod_cliente) {
         try {
-            objeto = dao.getObjectById(cod_aluno);
+            objeto = dao.getObjectById(cod_cliente);
         } catch (Exception e) {
             Util.mensagemErro("Erro ao recuperar objeto: " + e.getMessage());
         }
     }
 
-    public void excluir(Integer cod_aluno) {
+    public void excluir(Integer cod_cliente) {
         try {
-            objeto = dao.getObjectById(cod_aluno);
+            objeto = dao.getObjectById(cod_cliente);
             dao.remove(objeto);
             Util.mensagemInformacao("Objeto removido com sucesso");
         } catch (Exception e) {
