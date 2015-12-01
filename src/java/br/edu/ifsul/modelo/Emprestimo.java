@@ -12,9 +12,12 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
+import javax.validation.constraints.NotNull;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotEmpty;
 
@@ -39,6 +42,10 @@ public class Emprestimo implements Serializable{
     @Column(name="observacao", nullable = true, length = 100)
     @Length(max = 100, message = "A observacao não deve ultrapassar (max) caracteres")
     private String observacao;
+    @NotNull(message = "O Cliente deve ser informado")
+    @ManyToOne
+    @JoinColumn(name = "cliente", referencedColumnName = "cod_cliente", nullable = false)
+    private Cliente cliente;
     
     
    
@@ -107,6 +114,14 @@ public class Emprestimo implements Serializable{
 
     public void setObservacao(String observacao) {
         this.observacao = observacao;
+    }
+
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
     }
 
    

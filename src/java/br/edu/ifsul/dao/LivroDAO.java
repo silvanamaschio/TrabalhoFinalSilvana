@@ -54,7 +54,7 @@ public class LivroDAO implements Serializable {
         this.listarTodos = listarTodos;
     }
 
-    public Livro getObjectById(Integer cod_livro) {
+    public Livro getObjectById(Integer cod_exemplar) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

@@ -1,7 +1,7 @@
 
 package br.edu.ifsul.dao;
 
-import br.edu.ifsul.modelo.Revista;
+import br.edu.ifsul.modelo.Emprestimo;
 import java.io.Serializable;
 import java.util.List;
 import javax.ejb.Stateless;
@@ -14,29 +14,31 @@ import javax.persistence.PersistenceContext;
  * @email jorge.bavaresco@passofundo.ifsul.edu.br
  */
 @Stateless
-public class RevistaDAO implements Serializable {
+public class EmprestimoDAO implements Serializable {
     
     @PersistenceContext(unitName = "TATrabalhoSilvanaPU")
     private EntityManager em;
-    private List<Revista> listarTodos;
+    private List<Emprestimo> listarTodos;
 
-    public RevistaDAO() {
+    public EmprestimoDAO() {
     }
     
-    public void persist(Revista objeto) throws Exception {
+    public void persist(Emprestimo objeto) throws Exception {
         em.persist(objeto);        
     }
     
-    public void merge(Revista objeto) throws Exception {
+    public void merge(Emprestimo objeto) throws Exception {
         em.merge(objeto);
     }
     
-    public void remove(Revista objeto) throws Exception{
+    public void remove(Emprestimo objeto) throws Exception{
         objeto = em.merge(objeto);
         em.remove(objeto);
     }
     
-   
+    public Emprestimo getObjectById(Integer cod_emprestimo) throws Exception {
+        return em.find(Emprestimo.class, cod_emprestimo);
+    }
 
     public EntityManager getEm() {
         return em;
@@ -46,16 +48,12 @@ public class RevistaDAO implements Serializable {
         this.em = em;
     }
 
-    public List<Revista> getListarTodos() {
-        return em.createQuery("from Revista order by titulo").getResultList();
+    public List<Emprestimo> getListarTodos() {
+        return em.createQuery("from Emprestimo order by data").getResultList();
     }
 
-    public void setListarTodos(List<Revista> listarTodos) {
+    public void setListarTodos(List<Emprestimo> listarTodos) {
         this.listarTodos = listarTodos;
-    }
-
-    public Revista getObjectById(Integer cod_exemplar) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }

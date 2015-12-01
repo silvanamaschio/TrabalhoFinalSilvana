@@ -4,8 +4,6 @@ import java.io.Serializable;
 import java.util.Calendar;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import org.hibernate.validator.constraints.Length;
@@ -18,6 +16,7 @@ public class Revista extends Exemplar implements Serializable {
 
     @NotBlank(message = "A editora deve ser informada")
     @Column(name = "editora", length = 50, nullable = false)
+    @Length(max = 4, message = "A editora não deve possuir mais de {max} digitos")
     private String editora;
     @Column(name = "lancamento", nullable = false)
     @Temporal(javax.persistence.TemporalType.DATE)

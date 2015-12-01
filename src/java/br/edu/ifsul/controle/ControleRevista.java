@@ -6,7 +6,6 @@ import br.edu.ifsul.util.Util;
 import java.io.Serializable;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
 import javax.faces.bean.ViewScoped;
 
 
@@ -27,8 +26,9 @@ public class ControleRevista implements Serializable {
         return "/privado/revista/listar?faces-redirect=true";
     }
 
-    public void novo() {
-        objeto = new Revista();        
+    public String novo() {
+        objeto = new Revista();  
+        return "formulario?faces-redirect=true";
     }
 
     public void salvar() {
@@ -46,19 +46,22 @@ public class ControleRevista implements Serializable {
     
     
     
-     
+     public String cancelar() {
+        objeto = null;
+        return "listar?faces-redirect=true";
+    }      
       
-    public void editar(Integer cod_livro) {
+    public void editar(Integer cod_exemplar) {
         try {
-            objeto = dao.getObjectById(cod_livro);            
+            objeto = dao.getObjectById(cod_exemplar);            
         } catch (Exception e) {
             Util.mensagemErro("Erro ao recuperar objeto: "+e.getMessage());            
         }
     }
     
-    public void excluir(Integer cod_livro){
+    public void excluir(Integer cod_exemplar){
         try {
-            objeto = dao.getObjectById(cod_livro);
+            objeto = dao.getObjectById(cod_exemplar);
             dao.remove(objeto);
             Util.mensagemInformacao("Objeto removido com sucesso");
         } catch (Exception e){
