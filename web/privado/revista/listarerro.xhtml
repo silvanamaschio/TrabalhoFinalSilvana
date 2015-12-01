@@ -12,7 +12,7 @@
         <ui:define name="conteudo">
             <h:form id="formListagem" prependId="false">
                 <p:growl/>
-                <p:commandButton value="Nova Revista"
+                <p:commandButton value="Novo Revista"
                                  actionListener="#{controleRevista.novo()}"
                                  update=":formEdicao"
                                  process="@form"
@@ -33,7 +33,7 @@
                     <p:column headerText="Ações">
                         <div align="center">
                             <p:commandButton icon="ui-icon-pencil"
-                                             action="#{controleReista.editar(obj.cod_exemplar)}"
+                                             action="#{controleRevista.editar(obj.cod_exemplar)}"
                                              oncomplete="PF('dlg').show();"
                                              update=":formEdicao"
                                              process="@form"/>
@@ -70,36 +70,35 @@
                                     <p:inputText value="#{controleRevista.objeto.cod_exemplar}" readonly="true" size="5"/>
                                     <p:outputLabel value="Titulo" for="txtTitulo"/>
                                     <p:inputText value="#{controleRevista.objeto.titulo}" size="50" maxlength="50" id="txtTitulo" placeholder="O Título é obrigatório" required="true"/>
-                                    <p:outputLabel value="DataAquisicao" for="txtDataAquisicao"/>
+                                     <p:outputLabel value="DataAquisicao" for="txtDataAquisicao"/>
                                     <p:calendar value="#{controleRevista.objeto.data_aquisicao}"
                                                 id="txtDataAquisicao"
                                                 mask="true" pattern="dd/MM/yyyy" navigator="true">
                                         <f:converter converterId="converterCalendar"/>
                                     </p:calendar>
-                                    <p:outputLabel value="Fornecedor" for="txtFornecedor"/>
+                                     <p:outputLabel value="Fornecedor" for="txtFornecedor"/>
                                     <p:inputText value="#{controleRevista.objeto.fornecedor}"
                                                  id="txtFornecedor" size="50" maxlength="50" placeholder="O Fornecedor é obrigatório" required="true"/> 
                                     <p:outputLabel value="Estoque" for="txtEstoque"/>
                                     <p:inputText  value="#{controleRevista.objeto.estoque}"
-                                                  id="txtEstoque" size="30" maxlength="30"/> 
+                                                 id="txtEstoque" size="30" maxlength="30"/> 
                                     <p:outputLabel value="Editora" for="txtEditora"/>
                                     <p:inputText  value="#{controleRevista.objeto.editora}"
-                                                  id="txtEditora" size="50" maxlength="50" placeholder="A editora é obrigatória" required="true"/> 
+                                                 id="txtEditora" size="50" maxlength="50" placeholder="A editora é obrigatória" required="true"/> 
                                     <p:outputLabel value="Lancamento" for="txtLancamento"/>
                                     <p:calendar value="#{controleRevista.objeto.lancamento}"
-                                                id="txtLancamento"
-                                                mask="true" pattern="dd/MM/yyyy" navigator="true">
-                                        <f:converter converterId="converterCalendar"/>
+                                                id="txtLancamento" mask="true" pattern="dd/MM/yyyy" navigator="true">
+                                    <f:converter converterId="converterCalendar"/>
                                     </p:calendar>
                                     <p:outputLabel value="Valor" for="txtValor"/>
-                                    <p:inputText  value="#{controleRevista.objeto.valor}"
-                                                  id="txtValor" size="10" maxlength="10"/>
+                                    <p:inputText value="#{controleRevista.objeto.valor}"
+                                                 id="txtValor" size="10" maxlength="10"/> 
                                     <p:outputLabel value="NroPaginas" for="txtNroPaginas"/>
                                     <p:inputText value="#{controleRevista.objeto.nro_paginas}"
-                                                 id="txtNroPaginas" size="4" maxlength="5"/>  
-                                    <p:outputLabel value="Cidade" for="txtCidade"/>
-                                    <p:inputText value="#{controleLivro.objeto.cidade}"
-                                                 id="txtCidade" size="50" maxlength="50" placeholder="A cidade é obrigatória" required="true"/> 
+                                                 id="txtNroPaginas"  size="4" maxlength="5"/>    
+                                     <p:inputText  value="#{controleRevista.objeto.cidade}"
+                                                id="txtCidade" size="50" maxlength="50" placeholder="A cidade é obrigatória" required="true"/> 
+                                        
 
                                 </p:panelGrid>                                
                             </div>

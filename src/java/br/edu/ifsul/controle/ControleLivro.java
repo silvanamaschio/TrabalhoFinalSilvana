@@ -26,9 +26,8 @@ public class ControleLivro implements Serializable {
         return "/privado/livro/listar?faces-redirect=true";
     }
 
-    public String novo() {
+    public void novo() {
         objeto = new Livro(); 
-        return "formulario?faces-redirect=true";
     }
 
     public void salvar() {
@@ -45,13 +44,7 @@ public class ControleLivro implements Serializable {
     }
     
     
-    
-     
-      public String cancelar() {
-        objeto = null;
-        return "listar?faces-redirect=true";
-    }        
-    
+
     public void editar(Integer cod_exemplar) {
         try {
             objeto = dao.getObjectById(cod_exemplar);            

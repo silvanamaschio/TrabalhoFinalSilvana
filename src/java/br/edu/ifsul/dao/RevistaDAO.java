@@ -54,8 +54,8 @@ public class RevistaDAO implements Serializable {
         this.listarTodos = listarTodos;
     }
 
-    public Revista getObjectById(Integer cod_exemplar) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+   public Revista getObjectById(Integer cod_exemplar) {
+        return em.find(Revista.class, cod_exemplar);
     }
 
 }

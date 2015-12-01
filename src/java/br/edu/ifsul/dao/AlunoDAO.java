@@ -2,6 +2,7 @@
 package br.edu.ifsul.dao;
 
 import br.edu.ifsul.modelo.Aluno;
+import br.edu.ifsul.modelo.Livro;
 import java.io.Serializable;
 import java.util.List;
 import javax.ejb.Stateless;
@@ -55,7 +56,8 @@ public class AlunoDAO implements Serializable {
     }
 
     public Aluno getObjectById(Integer cod_cliente) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return em.find(Aluno.class, cod_cliente);
     }
+
 
 }
