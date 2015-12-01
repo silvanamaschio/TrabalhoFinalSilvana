@@ -26,14 +26,13 @@ public class ControleServidor implements Serializable {
         return "/privado/servidor/listar?faces-redirect=true";
     }
 
-    public String novo() {
-        objeto = new Servidor();  
-        return "formulario?faces-redirect=true";
+    public void novo() {
+        objeto = new Servidor(); 
     }
 
     public void salvar() {
         try {
-            if (objeto.getSiape()== null) {
+            if (objeto.getCod_cliente()== null) {
                 dao.persist(objeto);
             } else {
                 dao.merge(objeto);
@@ -44,26 +43,19 @@ public class ControleServidor implements Serializable {
         }
     }
     
-    public String cancelar() {
-        objeto = null;
-        return "listar?faces-redirect=true";
-    }      
     
-    
-    
-     
-      
-    public void editar(Integer cod_servidor) {
+
+    public void editar(Integer cod_cliente) {
         try {
-            objeto = dao.getObjectById(cod_servidor);            
+            objeto = dao.getObjectById(cod_cliente);            
         } catch (Exception e) {
             Util.mensagemErro("Erro ao recuperar objeto: "+e.getMessage());            
         }
     }
     
-    public void excluir(Integer cod_servidor){
+    public void excluir(Integer cod_cliente){
         try {
-            objeto = dao.getObjectById(cod_servidor);
+            objeto = dao.getObjectById(cod_cliente);
             dao.remove(objeto);
             Util.mensagemInformacao("Objeto removido com sucesso");
         } catch (Exception e){

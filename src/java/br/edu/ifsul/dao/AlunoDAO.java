@@ -55,9 +55,10 @@ public class AlunoDAO implements Serializable {
         this.listarTodos = listarTodos;
     }
 
-    public Aluno getObjectById(Integer cod_cliente) {
+   public Aluno getObjectById(Integer cod_cliente) {
         return em.find(Aluno.class, cod_cliente);
     }
+
 
 
 }

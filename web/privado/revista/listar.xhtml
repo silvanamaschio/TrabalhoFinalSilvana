@@ -33,7 +33,7 @@
                     <p:column headerText="Ações">
                         <div align="center">
                             <p:commandButton icon="ui-icon-pencil"
-                                             action="#{controleReista.editar(obj.cod_exemplar)}"
+                                             action="#{controleRevista.editar(obj.cod_exemplar)}"
                                              oncomplete="PF('dlg').show();"
                                              update=":formEdicao"
                                              process="@form"/>
@@ -98,7 +98,7 @@
                                     <p:inputText value="#{controleRevista.objeto.nro_paginas}"
                                                  id="txtNroPaginas" size="4" maxlength="5"/>  
                                     <p:outputLabel value="Cidade" for="txtCidade"/>
-                                    <p:inputText value="#{controleLivro.objeto.cidade}"
+                                    <p:inputText value="#{controleRevista.objeto.cidade}"
                                                  id="txtCidade" size="50" maxlength="50" placeholder="A cidade é obrigatória" required="true"/> 
 
                                 </p:panelGrid>                                

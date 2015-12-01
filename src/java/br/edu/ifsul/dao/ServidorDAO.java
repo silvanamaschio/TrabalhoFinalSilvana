@@ -1,6 +1,7 @@
 
 package br.edu.ifsul.dao;
 
+import br.edu.ifsul.modelo.Aluno;
 import br.edu.ifsul.modelo.Servidor;
 import java.io.Serializable;
 import java.util.List;
@@ -54,8 +55,9 @@ public class ServidorDAO implements Serializable {
         this.listarTodos = listarTodos;
     }
 
-    public Servidor getObjectById(Integer cod_servidor) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public Servidor getObjectById(Integer cod_cliente) {
+        return em.find(Servidor.class, cod_cliente);
     }
+
 
 }

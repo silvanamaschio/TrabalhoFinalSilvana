@@ -24,10 +24,10 @@ public class Aluno extends Cliente implements Serializable {
     @Column(name = "matricula", length = 15, nullable = false)
     private String matricula;
     @NotBlank(message = "O curso deve ser informado")
-    @Column(name = "curso", length = 50, nullable = false, unique = true)
+    @Column(name = "curso", length = 50, nullable = false)
     private String curso;
     @NotBlank(message = "A turma deve ser informada")
-    @Column(name = "turma", length = 50, nullable = false, unique = true)
+    @Column(name = "turma", length = 50, nullable = false)
     private String turma;
     @NotNull(message = "A data de matrícula deve ser informada")
     @Temporal(TemporalType.DATE)

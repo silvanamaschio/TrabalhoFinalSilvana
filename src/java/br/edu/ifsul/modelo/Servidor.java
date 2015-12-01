@@ -24,10 +24,10 @@ public class Servidor extends Cliente implements Serializable {
     @Column(name = "siape", length = 15, nullable = false)
     private String siape;
     @NotBlank(message = "O departamento deve ser informado")
-    @Column(name = "departamento", length = 50, nullable = false, unique = true)
+    @Column(name = "departamento", length = 50, nullable = false)
     private String departamento;
     @NotBlank(message = "O setor deve ser informado")
-    @Column(name = "setor", length = 50, nullable = false, unique = true)
+    @Column(name = "setor", length = 50, nullable = false)
     private String setor;
     @NotNull(message = "A data de admissão deve ser informada")
     @Temporal(TemporalType.DATE)
